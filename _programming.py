@@ -17,6 +17,7 @@ import dragonfly
 import go_grammar
 import python_grammar
 import sql_grammar
+import javascript_grammar
 
 
 vim_context = aenea.ProxyPlatformContext('linux')
@@ -26,6 +27,7 @@ language_map = {
     "(go|gopher)": go_grammar.get_grammar(vim_context),
     "python":      python_grammar.get_grammar(vim_context),
     "sql":         sql_grammar.get_grammar(vim_context),
+    "javascript": javascript_grammar.get_grammar(vim_context)
 }
 
 
