@@ -31,6 +31,7 @@ git_mapping = aenea.configuration.make_grammar_commands('git', {
     'git checkout': Text("git checkout "),
     'git status': Text("git status") + Key("enter"),
     'git stat': Text("git show --stat") + Key("enter"),
+    'git show': Text("git show") + Key("enter"),
     'git log': Text("git log") + Key("enter"),
     'git push': Text("git push") + Key("enter"),
 })
