@@ -67,6 +67,13 @@ basics_mapping = aenea.configuration.make_grammar_commands('vim', {
     'screen down': Key("escape, c-f"),
     'screen up': Key("escape, c-b"),
 
+    # Code folding
+    'fold all': Key("z, M"),
+    'unfold all': Key("z, R"),
+
+    # Center on line
+    'center': Key("escape, z, z"),
+
     # Append to line
     'noop <n>': Key("escape") + Function(goto_line) + Key("A, enter"),
     'noop': Key("escape, A, enter"),
@@ -142,6 +149,13 @@ basics_mapping = aenea.configuration.make_grammar_commands('vim', {
     'up <n> (lines|line)': Key("%(n)d, up"),
     'down <n> (lines|line)': Key("%(n)d, down"),
     'go to [line] <n>': Key("escape") + Function(goto_line),
+    'jump top': Key("g,g"),
+    'jump bottom': Key("G"),
+    'jump out': Key("c-o"),
+    'jump in': Key("c-i"),
+    'jump high|hi': Key('H'),
+    'jump mid|middle': Key('M'),
+    'jump low': Key('L'),
     'matching': Key("escape, percent"),
     '(boop|easy motion)': Key("escape, comma, comma, s"),
     })
