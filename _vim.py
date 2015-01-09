@@ -52,6 +52,11 @@ def delete_lines(n, n2):
 basics_mapping = aenea.configuration.make_grammar_commands('vim', {
     'vim': Text("vim"),
 
+    # ctrl p
+    '(fuzzy find|open fuzzy)': Key("escape, c-p"),
+    ' fuzzy split-horizontal': Key('c-s'),
+    ' fuzzy split-vertical': Key('c-v'),
+
     # Moving between splits
     'split-left': Key("escape, c-h"),
     'split-right': Key("escape, c-l"),
@@ -60,6 +65,8 @@ basics_mapping = aenea.configuration.make_grammar_commands('vim', {
     'split-close': Key("escape, colon, q, enter"),
     'open [in] split': Key("s"),
     'open [in] tab': Key("t"),
+    'split-vertical': Key('escape, c-w,v'),
+    'split-horizontal': Key('escape, c-w,s'),
 
     # Moving viewport
     'bund': Key("escape, 2, 0, c-y"),
@@ -68,8 +75,16 @@ basics_mapping = aenea.configuration.make_grammar_commands('vim', {
     'screen up': Key("escape, c-b"),
 
     # Code folding
-    'fold all': Key("z, M"),
-    'unfold all': Key("z, R"),
+    'fold all': Key("escape, z, M"),
+    'unfold all': Key("escape, z, R"),
+    'fold': Key("escape, z, c"),
+    'fold deep': Key("escape, z, C"),
+    'unfold': Key("escape, z, o"),
+    'unfold deep': Key("escape, z, O"),
+
+    # Code fold motions
+    'fold up': Key("escape, z, k"),
+    'fold down': Key("escape, z, j"),
 
     # Center on line
     'center': Key("escape, z, z"),
@@ -105,8 +120,8 @@ basics_mapping = aenea.configuration.make_grammar_commands('vim', {
     'clear search': Key("escape, colon, n, o, h, enter"),
 
     # Character operations
-    'dart': Key("x"),
-    'dart <n>': Key("x:%(n)d"),
+    'dart': Key("escape, x"),
+    'dart <n>': Key("escape, x:%(n)d"),
     'replace letter': Key("r"),
     'replace mode': Key("R"),
     'change case': Key("escape, right, s-backtick, i, left"),
@@ -118,11 +133,11 @@ basics_mapping = aenea.configuration.make_grammar_commands('vim', {
     '(doord|doored|gord) <n>': Key("right, escape, %(n)d, d, w, i"),
     '(doord|doored|gord) back <n>': Key("right, escape, %(n)d, b, %(n)d, d, w, i"),
     'chord': Key("right, escape, c, i, w"),
-    'chord <n>': Key("escape, right, c, %(n)d, w"),
-    'sword': Key("escape, right, v, e"),
-    'sword <n>': Key("escape, right, v, e:%(n)d"),
-    'forward':  Key("escape, right, w, i"),
-    'forward <n>': Key("escape, right, %(n)d, w, i"),
+    'chord <n>': Key("escape, c, %(n)d, w"),
+    'sword': Key("escape, v, e"),
+    'sword <n>': Key("escape, v, e:%(n)d"),
+    'forward':  Key("escape,  w, i"),
+    'forward <n>': Key("escape, %(n)d, w, i"),
     'backward': Key("escape, b, i"),
     'backward <n>': Key("escape, %(n)d, b, i"),
     'stripword': Key("escape, b, left, del, e, a"),
@@ -134,6 +149,8 @@ basics_mapping = aenea.configuration.make_grammar_commands('vim', {
     'yine': Key("escape, y:2"),
     'yine <n>': Key("escape") + Function(goto_line) + Key("y:2"),
     'yine <n> (thru|through|to) <n2>': Key("escape") + Function(yank_lines),
+    'yine system': Key("escape, dquote, plus, y:2"),
+    'yine mouse': Key("escape, dquote, asterisk, y:2"),
 
     'select until <pressKey>': Key("escape, v, t") + Text("%(pressKey)s"),
     'select including <pressKey>': Key("escape, v, f") + Text("%(pressKey)s"),
@@ -141,16 +158,16 @@ basics_mapping = aenea.configuration.make_grammar_commands('vim', {
     'dell including <pressKey>': Key("escape, d, f") + Text("%(pressKey)s"),
 
     # Copy and Paste
-    'yank': Key("y"),
-    'extract': Key("x"),
+    'yank': Key("escape, y"),
+    'extract': Key("escape, x"), # FIXME: Same as dart?
     'glue': Key('escape, p'),
 
     # Movement
     'up <n> (lines|line)': Key("%(n)d, up"),
     'down <n> (lines|line)': Key("%(n)d, down"),
     'go to [line] <n>': Key("escape") + Function(goto_line),
-    'jump top': Key("g,g"),
-    'jump bottom': Key("G"),
+    'jump top': Key("escape, g,g"),
+    'jump bottom': Key("escape, G"),
     'jump out': Key("c-o"),
     'jump in': Key("c-i"),
     'jump high|hi': Key('H'),

@@ -20,6 +20,7 @@ except ImportError:
 terminal_context = aenea.ProxyPlatformContext('linux')
 grammar = dragonfly.Grammar('terminal', context=terminal_context)
 
+tmux_prefix = "c-space"
 terminal_mapping = aenea.configuration.make_grammar_commands('terminal', {
     # Terminal commands
     # dir is hard to say and recognize. Use something else
@@ -39,6 +40,19 @@ terminal_mapping = aenea.configuration.make_grammar_commands('terminal', {
     '(pseudo|sudo|pseudo-)': Text("sudo "),
     '(apt|app) get': Text("sudo apt-get "),
     '(apt|app) get install': Text("sudo apt-get install "),
+
+    # tmux
+    'pane left': Key("c-h"),
+    'pane right': Key("c-l"),
+    'pane-split-vertical': Key(tmux_prefix + ", l"),
+    'pane down': Key("c-j"),
+    'pane-split-horizontal': Key(tmux_prefix + ", j"),
+    '(pane-kill|pane-close)': Key(tmux_prefix + ", x"),
+    'pane up': Key("c-k"),
+    'session': Key(tmux_prefix + ", s"),
+    'pane new': Key(tmux_prefix + ", c"),
+    'pane next': Key(tmux_prefix + ",  n"),
+    'pane zoom': Key(tmux_prefix + ", z"),
 })
 
 

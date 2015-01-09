@@ -32,8 +32,12 @@ git_mapping = aenea.configuration.make_grammar_commands('git', {
     'git status': Text("git status") + Key("enter"),
     'git stat': Text("git show --stat") + Key("enter"),
     'git show': Text("git show") + Key("enter"),
+    'git staging': Text("git diff --cached") + Key("enter"),
     'git log': Text("git log") + Key("enter"),
     'git push': Text("git push") + Key("enter"),
+    'git stash': Text("git stash") + Key("enter"),
+    'git stash show': Text("git stash show") + Key("enter"),
+    'git stash pop': Text("git stash pop") + Key("enter"),
 })
 
 

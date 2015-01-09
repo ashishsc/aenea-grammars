@@ -4,5 +4,6 @@
     "full-name": "Tony Grosinger",
     "first-name": "Tony",
     "last-name": "Grosinger",
-    "email-address": "tony@grosinger.net"
+    "email-address": "tony@grosinger.net",
+    "tmux-prefix": "space"
 }

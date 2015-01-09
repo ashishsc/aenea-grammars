@@ -45,10 +45,15 @@ def get_grammar(context, config):
             '(win|window) right': Key(mod_char + "-semicolon"),
             '(win|window) up': Key(mod_char + "-l"),
             '(win|window) down': Key(mod_char + "-k"),
+            '(win|window) snap-left': Key(mod_char + "s-j"),
+            '(win|window) snap-right': Key(mod_char + "s-semicolon"),
+            '(win|window) snap-up': Key(mod_char + "s-l"),
+            '(win|window) snap-down': Key(mod_char + "s-k"),
             'full-screen': Key(mod_char + "-f"),
             '(win|window) stacking': Key(mod_char + "-s"),
             '(win|window) default': Key(mod_char + "-e"),
             '(win|window) tabbed': Key(mod_char + "-w"),
+            '(win|window) floating': Key(mod_char + "s-space"),
 
             '(win|window) horizontal': Key(mod_char + "-h"),
             '(win|window) vertical': Key(mod_char + "-v"),
@@ -56,7 +61,7 @@ def get_grammar(context, config):
             '(win|window) vertical (term|terminal)': Key(mod_char + "-v, a-enter"),
             '(win|window) horizontal (term|terminal)': Key(mod_char + "-h, a-enter"),
 
-            '(win|window) (kill|close)': Key(mod_char + "-s-q"),
+            '(win|window) (kill|close)': Key(mod_char + "s-q"),
             '(win|window) launch': Key(mod_char + "-d"),
         })
         extras = [

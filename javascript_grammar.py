@@ -11,7 +11,7 @@ from aenea import (
 from format import format_snake_case, format_pascal_case, format_camel_case
 import dragonfly
 
-def create_anon_function(text):
+def create_anon_function():
     Text('function() {\n}').execute()
 
 def create_named_function(text):
@@ -19,7 +19,16 @@ def create_named_function(text):
 
 javascript_mapping = aenea.configuration.make_grammar_commands('javascript', {
     'var': Text("var "),
-    'new (function|func)': Function(create_anon_function)
+    'new (function|func)': Function(create_anon_function),
+    'new (function|func) named <text>': Function(create_named_function),
+    'new object': Text('{\n}') + Key("up"),
+    'log': Text("console.log()") + Key("left"),
+
+    'true': Text("true"),
+    'false': Text("false"),
+    'undefined': Text("undefined"),
+    '(null|nil)': Text("null"),
+    'loop':  Text("for (var i = 0; i < items.length; i++) {\n}")
 })
 
 class Javascript (dragonfly.MappingRule):
